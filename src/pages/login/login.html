@@ -1,0 +1,37 @@
+<ion-header>  
+    <img src="assets/imgs/icon.jpg">
+</ion-header>
+
+<ion-content>
+
+  <h3 style="margin:10px;">
+    Log in
+  </h3>
+
+  <ion-list no-lines >
+   <ion-item class="a">
+      <ion-label floating>
+        Email
+      </ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+   </ion-item >
+  <ion-item class="a">
+    <ion-label floating>
+      Password
+    </ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  </ion-list>
+  <ion-item class="a" no-lines>
+    <p item-end class="b"> Forgot Password</p>
+  </ion-item>
+  <ion-item class="a" no-lines>
+    <p item-end  class="b" (click)="signup()"> Not already registered? </p>
+  </ion-item>
+ 
+</ion-content>
+<ion-footer>
+  <button ion-button block full large (click)="login()">
+   LOG IN 
+  </button>
+</ion-footer>

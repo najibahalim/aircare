@@ -1,0 +1,38 @@
+<!--
+  Generated template for the ExplorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Explore</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+<ion-card *ngFor="let r of flist" (click)="open()">
+  <img src="{{r.imgurl}}" width=200 height=100 />
+  <div class="card-title">{{r.place}}</div>
+  <div class="card-subtitle">{{r.country}}</div>
+  <ion-card-content>
+    <ion-item>
+      <p>
+        {{r.path}}
+      </p>
+      <p item-end>
+        {{r.date}}
+        <br>
+        <ion-icon name="jet"></ion-icon>
+        From ₹ {{r.price}}
+      </p>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+</ion-content>

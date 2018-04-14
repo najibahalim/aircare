@@ -1,0 +1,59 @@
+<!--
+  Generated template for the AdminMainPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton >
+
+    <ion-title>
+      Flights 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-card class="c">
+    <ion-list radio-group [(ngModel)]="way" class="b">
+    
+      <ion-item no-lines class="b">
+        <ion-label>One Way</ion-label>
+        <ion-radio value="one" item-left></ion-radio>
+      </ion-item>
+    
+      <ion-item no-lines class="b">
+        <ion-label>Round Trip</ion-label>
+        <ion-radio value="two" item-left></ion-radio>
+      </ion-item>
+    
+      <hr>
+      <button ion-button block icon-start outline class="a" (click)="from()">
+        <ion-icon name="md-globe"> </ion-icon>
+        <p>From: {{f}}</p>
+      </button>
+      <button ion-button block icon-start outline class="a" (click)="To()">
+        <ion-icon name="md-globe"> </ion-icon>
+        <p>To: {{t}}</p>
+      </button>
+      <button ion-button block icon-start outline class="a" (click)="d1()">
+        <ion-icon name="calendar"> </ion-icon>
+        <p>{{dateo}}</p>
+      </button>
+      <button ion-button block icon-start outline class="a" (click)="d2()">
+        <ion-icon name="calendar"> </ion-icon>
+        <p>{{datet}}</p>
+      </button>
+      <button ion-button block icon-start outline class="a" (click)="c()">
+        <ion-icon name="contacts"> </ion-icon>
+        <p>{{classt}}</p>
+      </button>
+    </ion-list>
+    <button ion-button large block class="searchbut" (click)="next()">
+      Search
+    </button>
+  </ion-card>
+</ion-content>

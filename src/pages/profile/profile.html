@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="mytrip()">
+        My trips
+      </button>
+      <button ion-button (click)="logout()">
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-item text-center class="b">
+  <ion-icon name="ios-person-outline" class="a"></ion-icon>
+  <button ion-button (click)="one()">Smart Tips</button>
+</ion-item>
+<ion-item class="b">
+  <ion-label floating>First Name</ion-label>
+  <ion-input value="{{fname}}" disabled></ion-input>
+</ion-item>
+<ion-item class="b">
+  <ion-label floating>Last Name</ion-label>
+  <ion-input value="{{lname}}" disabled></ion-input>
+</ion-item>
+<ion-item class="b">
+  <ion-label floating>Email</ion-label>
+  <ion-input value="{{email}}"  disabled></ion-input>
+  <a item-end>Edit</a>
+</ion-item>
+<ion-item class="b">
+  <ion-label floating>Mobile Number</ion-label>
+  <ion-input value="+91 {{mobile}}" disabled></ion-input>
+  <a item-end>Edit</a>
+</ion-item>
+</ion-content>
