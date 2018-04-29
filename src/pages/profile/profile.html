@@ -9,12 +9,8 @@
   <ion-navbar>
     <ion-title>Profile</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="mytrip()">
-        My trips
-      </button>
-      <button ion-button (click)="logout()">
-        Logout
-      </button>
+      <button ion-button (click)="logout()">Logout</button>
+
     </ion-buttons>
   </ion-navbar>
 
@@ -22,26 +18,42 @@
 
 
 <ion-content padding>
-<ion-item text-center class="b">
-  <ion-icon name="ios-person-outline" class="a"></ion-icon>
-  <button ion-button (click)="one()">Smart Tips</button>
+<ion-buttons>
+  <button ion-button (click)="tip()">Smart Tips</button>
+  <button ion-button (click)="trip()">My Trips</button>
+  <button ion-button (click)="sos()">SOS</button>
+</ion-buttons>
+<hr><br><br>
+<label >
+<img src="{{url}}" width=150 height=150 class="a">
+<input type="file" [disabled]=able style="display:none" name="file" id=myFile (change)="next()" multiple></label>
+
+<ion-item>
+  <h2>First name</h2>
+  <h3>{{fname}}</h3>
+  <p (click)="edit('fname')" style="color:blue" item-end>Edit</p>
 </ion-item>
-<ion-item class="b">
-  <ion-label floating>First Name</ion-label>
-  <ion-input value="{{fname}}" disabled></ion-input>
+<ion-item>
+  <h2>Last Name</h2>
+  <h3>{{lname}}</h3>
+  <p (click)="edit('lname')" style="color:blue" item-end>Edit</p>
 </ion-item>
-<ion-item class="b">
-  <ion-label floating>Last Name</ion-label>
-  <ion-input value="{{lname}}" disabled></ion-input>
+<ion-item>
+  <h2>Date of Birth</h2>
+  <h3>{{dob}}</h3>
+  <p (click)="edit('dob')" style="color:blue" item-end>Edit</p>
 </ion-item>
-<ion-item class="b">
-  <ion-label floating>Email</ion-label>
-  <ion-input value="{{email}}"  disabled></ion-input>
-  <a item-end>Edit</a>
+<ion-item>
+  <h2>Mobile</h2>
+  <h3>{{mobile}}</h3>
+    <p (click)="edit('mob')" style="color:blue" item-end>Edit</p>
 </ion-item>
-<ion-item class="b">
-  <ion-label floating>Mobile Number</ion-label>
-  <ion-input value="+91 {{mobile}}" disabled></ion-input>
-  <a item-end>Edit</a>
+<ion-item>
+  <h2>Email</h2>
+  <h3>{{email}}</h3>
+</ion-item>
+<ion-item *ngIf="aadhar!=undefined">
+  <h2>Aadhaar Card</h2>
+  <h3>{{aadhar}}</h3>
 </ion-item>
 </ion-content>

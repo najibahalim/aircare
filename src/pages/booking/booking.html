@@ -27,6 +27,14 @@
   <ion-item>
     {{flist.time}} {{flist.stop}}
   </ion-item>
+  <ion-item>
+    <h3>Departure Date</h3>
+    {{flist.depart}}
+  </ion-item>
+    <ion-item *ngIf="flist.return1!=undefined">
+      <h3>Return Date</h3>
+      {{flist.return1}}
+    </ion-item>
 </ion-card>
 
 <ion-card>

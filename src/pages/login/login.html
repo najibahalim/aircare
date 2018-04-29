@@ -1,29 +1,35 @@
 <ion-header>  
-    <img src="assets/imgs/icon.jpg">
+    
 </ion-header>
 
 <ion-content>
-
+<img src="assets/imgs/icon.jpg">
   <h3 style="margin:10px;">
     Log in
   </h3>
 
-  <ion-list no-lines >
+
    <ion-item class="a">
-      <ion-label floating>
+      <ion-label stacked>
         Email
       </ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" placeholder="Enter email id"></ion-input>
    </ion-item >
   <ion-item class="a">
-    <ion-label floating>
+    <ion-label stacked>
       Password
     </ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  <ion-input placeholder="Enter password" [type]="passwordType" [(ngModel)]="password" clearOnEdit="false"></ion-input>
+    <button ion-button clear item-end (click)='hideShowPassword()' style="height:32px;">
+      <ion-icon [name]="passwordIcon" style="font-size:32px;"></ion-icon>
+      
+    </button>
+
   </ion-item>
-  </ion-list>
+<span class="c">Hint- Minimum 8 Characters Required</span>
+
   <ion-item class="a" no-lines>
-    <p item-end class="b"> Forgot Password</p>
+    <p item-end class="b" (click)="changep()"> Forgot Password</p>
   </ion-item>
   <ion-item class="a" no-lines>
     <p item-end  class="b" (click)="signup()"> Not already registered? </p>

@@ -15,7 +15,7 @@
 
 <ion-content padding>
 <ion-list>
-    <ion-item *ngFor="let s of flist" (click)="next()">
+    <ion-item *ngFor="let s of flist;let i=index" (click)="next(i)">
       <ion-thumbnail item-start>
         <img src="{{s.imgurl}}">
       </ion-thumbnail>

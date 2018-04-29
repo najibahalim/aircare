@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams, MenuController, AlertController } 
 import { DatePicker } from '@ionic-native/date-picker';
 import { ExplorePage } from '../explore/explore';
 import { FlightpricePage } from '../flightprice/flightprice';
+import { Storage } from '@ionic/storage';
+import { Auth } from '../../providers/auth/auth';
+import { SmarttipsPage } from '../smarttips/smarttips';
+import { MytripsPage } from '../mytrips/mytrips';
 
 /**
  * Generated class for the AdminMainPage page.
@@ -25,8 +29,22 @@ export class AdminMainPage {
   testRadioResult: any;
   f
   t
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, public alertCtrl: AlertController, private datePicker: DatePicker) {
+  way="one"
+  ano
+  aadhar=true;
+  email
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, public alertCtrl: AlertController, private datePicker: DatePicker,private storage:Storage,public auth:Auth) {
+    this.storage.get('aadhar').then((val)=>{
+      if(val!='none' && val!=undefined)
+      {
+        this.aadhar = false
+      }
+    })
+    this.storage.get('email').then((val) => {
+      this.email = val;
+    })
   }
+
 
   ionViewDidLoad() {
     this.menuCtrl.enable(true)
@@ -34,6 +52,36 @@ export class AdminMainPage {
   }
   toggle(){
     this.menuCtrl.open();
+  }
+  setaadhar(){
+   var details={
+     email:this.email,
+     aadhar:this.ano
+   }
+    console.log(this.ano)
+    if(this.ano.length!=12)
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Aadhar',
+        subTitle: 'Invalid Aadhar no',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+      return;
+    }
+    this.auth.aadhar(details).then(() => {
+    }
+      , (err) => {
+       
+      });
+    let alert = this.alertCtrl.create({
+      title: 'Aadhar',
+      subTitle: 'Sucessfully Linked Aadhar to your Account',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+    this.aadhar = false;
+    this.storage.set('aadhar', this.ano)
   }
 
   from(){
@@ -43,8 +91,8 @@ export class AdminMainPage {
 
     alert.addInput({
       type: 'radio',
-      label: 'Bombay',
-      value: 'Bombay',
+      label: 'Mumbai',
+      value: 'Mumbai',
       checked: true
     });
 
@@ -105,8 +153,8 @@ export class AdminMainPage {
 
     alert.addInput({
       type: 'radio',
-      label: 'Bombay',
-      value: 'Bombay',
+      label: 'Mumbai',
+      value: 'Mumbai',
       checked: true
     });
 
@@ -224,8 +272,44 @@ export class AdminMainPage {
   }
 
   next(){
+    var a=new Date(this.datet)
+    var b=new Date(this.dateo)
+    if (this.f == undefined || this.t == undefined || this.dateo == undefined )
+    {
+      alert("Enter all the details");
+      return;
+    }
+    else if(a!=undefined && a<b){
+      alert('Return date should be after Departure Date')
+      return;
+    }
+    else if(this.f==this.t)
+    {
+      alert('Source and Destination should be same')
+      return;
+    }
+    else if (b.getMilliseconds<Date.now) {
+      alert('Departure Date should be in future')
+      return;
+    }
+    else if (this.way == "two" && this.dateo == undefined)
+    {
+      alert("Enter all the details");
+      return;
+    }
+    this.storage.set('way',this.way);
+    this.storage.set('from', this.f);
+    this.storage.set('to', this.t);
+    this.storage.set('departure', this.dateo);
+    this.storage.set('return', this.datet);
     this.navCtrl.push(FlightpricePage)
   }
   
+  tip() {
+    this.navCtrl.push(SmarttipsPage)
+  }
+  trip() {
+    this.navCtrl.push(MytripsPage)
+  }
 
 }

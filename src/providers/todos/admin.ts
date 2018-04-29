@@ -30,14 +30,14 @@ export class Admin {
   }
 
 
-  getQuizzes() {
+  getQuizzes(email) {
 
     return new Promise((resolve, reject) => {
 
       let headers = new Headers();
       headers.append('Authorization', this.authService.token);
 
-      this.http.get('http://aircare-kinnari.herokuapp.com/api/admin/', { headers: headers })
+      this.http.get('http://aircare-kinnari.herokuapp.com/api/admin/'+email, { headers: headers })
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);

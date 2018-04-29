@@ -17,7 +17,7 @@
 
 
 <ion-content padding class="card-background-page">
-<ion-card *ngFor="let r of flist" (click)="open()">
+<ion-card *ngFor="let r of flist;let i=index" (click)="open(i)">
   <img src="{{r.imgurl}}" width=200 height=100 />
   <div class="card-title">{{r.place}}</div>
   <div class="card-subtitle">{{r.country}}</div>

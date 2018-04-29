@@ -14,26 +14,45 @@
 
 
 <ion-content padding>
-<ion-list>
-  <ion-item>
+<ion-list text-wrap>
+  <ion-item (click)="show(1)">
     <ion-icon name="ios-arrow-forward"></ion-icon>
      Know the difference between “direct” and “nonstop” flights, and always opt for the latter.
   </ion-item>
-  <ion-item>
+  <ion-item (click)="show(2)">
     <ion-icon name="ios-arrow-forward"></ion-icon>
    Make sure you buy your ticket under the exact name that appears on your ID.
   </ion-item>
-  <ion-item>
+  <ion-item (click)="show(3)">
     <ion-icon name="ios-arrow-forward"></ion-icon>
    Select your seats ASAP
   </ion-item>
-  <ion-item>
+  <ion-item (click)="show(4)">
     <ion-icon name="ios-arrow-forward"></ion-icon>
    Get to your gateway city as early as you can.
   </ion-item>
-  <ion-item>
+  <ion-item (click)="show(5)">
     <ion-icon name="ios-arrow-forward"></ion-icon>
    Double-check foreign document requirements.
   </ion-item>
 </ion-list>
+<ion-card>
+<ion-title>Blogs</ion-title>
+<ion-list>
+  <ion-item>
+    <a href="https://www.internationalinsurance.com/advice/fly-safe.php">Insurance Advice</a>
+  </ion-item>
+  <ion-item>
+    <a href="http://www.travelandleisure.com/travel-tips/travel-warnings/airplane-emergency-tips">Airplane Emergency Tips</a>
+  </ion-item>
+  <ion-item>
+    <a href="http://airsafe.com/ten_tips.htm">Top Ten Things to Remember</a>
+  </ion-item>
+  <ion-item>
+    <a href="https://www.usatoday.com/story/travel/advice/2012/12/12/10-packing-tips-every-traveler-should-know/1764207/">Packing Tips</a>
+  </ion-item>
+</ion-list>
+
+
+</ion-card>
 </ion-content>

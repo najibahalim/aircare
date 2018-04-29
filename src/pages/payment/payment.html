@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title>payment</ion-title>
   </ion-navbar>
 
@@ -23,21 +23,23 @@
       <ion-label stacked>
         CARD NUMBER
       </ion-label>
-      <ion-input placeholder="Valid Card Number" ></ion-input>
+      <ion-input placeholder="Valid Card Number" [(ngModel)]="a" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>
          Expiration Date
       </ion-label>
-      <ion-input placeholder="MM / YY " ></ion-input>
+      <ion-input placeholder="MM / YY " [(ngModel)]="b"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>
-       CV CODE
+       CVV Code
       </ion-label>
-      <ion-input placeholder="CVC"></ion-input>
+      <ion-input placeholder="CVV" type="password" [(ngModel)]="c"></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button full color=secondary (click)="next()">Book</button>
 </ion-card>
+
+
 </ion-content>

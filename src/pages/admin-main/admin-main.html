@@ -9,14 +9,38 @@
   <ion-navbar hideBackButton >
 
     <ion-title>
-      Flights 
+      Dashboard 
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="tip()">Smart Tips</button>
+      <button ion-button (click)="trip()">My Trips</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 
 <ion-content padding>
+  <ion-card *ngIf="aadhar==true" color="primary">
+    <ion-card-header>
+      Link Your Aadhar Card
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label stacked>Enter your Aadhaar Card number</ion-label>
+        <ion-input [(ngModel)]="ano" placeholder="XXXXXXXXXXXX">
+  
+        </ion-input>
+      </ion-item>
+      <button ion-button color=danger full (click)="setaadhar()">SUBMIT</button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="d" *ngIf="!aadhar==true">
+    <ion-icon name="md-checkmark-circle-outline" color=secondary ></ion-icon>
+    <ion-card-header color=secondary>
+      Aadhaar Card Verified
+    </ion-card-header>
+  </ion-card>
   <ion-card class="c">
     <ion-list radio-group [(ngModel)]="way" class="b">
     
@@ -41,19 +65,20 @@
       </button>
       <button ion-button block icon-start outline class="a" (click)="d1()">
         <ion-icon name="calendar"> </ion-icon>
-        <p>{{dateo}}</p>
+        <p>Departure Date: {{dateo}}</p>
       </button>
-      <button ion-button block icon-start outline class="a" (click)="d2()">
+      <button *ngIf="way=='two'" ion-button block icon-start outline class="a" (click)="d2()">
         <ion-icon name="calendar"> </ion-icon>
-        <p>{{datet}}</p>
+        <p>Return Date: {{datet}}</p>
       </button>
       <button ion-button block icon-start outline class="a" (click)="c()">
         <ion-icon name="contacts"> </ion-icon>
-        <p>{{classt}}</p>
+        <p>Class: {{classt}}</p>
       </button>
     </ion-list>
     <button ion-button large block class="searchbut" (click)="next()">
       Search
     </button>
   </ion-card>
+  
 </ion-content>

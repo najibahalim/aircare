@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { TabPage } from '../tab/tab';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 /**
  * Generated class for the PaymentPage page.
@@ -17,7 +18,16 @@ import { TabPage } from '../tab/tab';
 })
 export class PaymentPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private push: Push, public alertCtrl:AlertController) {
+  a
+  c
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private push: Push, public alertCtrl: AlertController, public localNotifications: LocalNotifications, public platform: Platform) {
+    this.localNotifications.schedule([{
+      text: 'Flight is expected on time',
+      trigger: { at: new Date(new Date().getTime() + 360000) },
+      led: 'FF0000'
+    }]);
+   
   }
 
   ionViewDidLoad() {
@@ -26,9 +36,33 @@ export class PaymentPage {
 
   pushMessage: string = 'push message will be displayed here';
   next(){
-   alert('Booking Successful')
+    if(this.a.length!=16 || this.c.length!=3)
+    {
+      alert("Enter details Properly!");
+      return;
+    }
+   alert('Payment recieved Successfully');
+    // this.localNotifications.schedule([{
+    //   text: 'Your Flight is Scheduled on Time ',
+    //   trigger: { at: new Date(new Date().getTime() + 3600) },
+    //   led: 'FF0000',
+    //   sound: null
+    // },
+    //   {
+    //     text: 'Your Flight is delayed by 1 hr ',
+    //     trigger: { at: new Date(new Date().getTime() + 8000) },
+    //     led: 'FF0000',
+    //     sound: null
+    //   }]);
+    this.localNotifications.schedule([{
+      text: 'Queue is Expected at Security Check-In ',
+      trigger: { at: new Date(new Date().getTime() + 360000) },
+      led: 'FF0000'
+    }]);
    this.navCtrl.push(TabPage)
   }
-    
+
+
+  
   
 }

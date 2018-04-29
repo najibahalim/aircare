@@ -20,18 +20,21 @@ export class MytripsPage {
   trips:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public adminService: Admin) {
   
-      this.adminService.getQuizzes().then((data: any) => {
+    this.storage.get('email').then((value) => {
+      this.adminService.getQuizzes(value).then((data: any) => {
         this.trips = data;
         console.log(data)
       }, (err) => {
         console.log(err)
         console.log("not allowed");
-      });
+      }); })
+     
     
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MytripsPage');
   }
+
 
 }

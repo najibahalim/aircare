@@ -56,6 +56,7 @@ export class Auth {
           this.storage.set('mobile', data.user.mobile);
           this.storage.set('email', data.user.email);
           this.storage.set('aadhar', data.user.aadhar);
+          this.storage.set('dob', data.user.dob);
           resolve(data);
 
         }, (err) => {
@@ -86,7 +87,7 @@ export class Auth {
           this.storage.set('fname', data.user.fname);
           this.storage.set('mobile', data.user.mobile);
           this.storage.set('email', data.user.email);
-          this.storage.set('aadhar', data.user.aadhar);
+          this.storage.set('dob', data.user.dob);
           resolve(res.json());
         }, (err) => {
           reject(err);
@@ -96,8 +97,64 @@ export class Auth {
 
   }
 
+  aadhar(details)
+  {
+    return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+     
+      //this.http.post('http://aircare-kinnari.herokuapp.com/api/auth/aadhar', JSON.stringify
+      this.http.post('http://aircare-kinnari.herokuapp.com/api/auth/aadhar', JSON.stringify
+      (details), { headers: headers })
+        .subscribe(res => {
+          console.log('aadhar link ho gaya')
+        }, (err) => {
+          reject(err);
+        });
+
+    });
+    
+  }
+  password(details) {
+    return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      //this.http.post('http://aircare-kinnari.herokuapp.com/api/auth/aadhar', JSON.stringify
+      this.http.post('http://aircare-kinnari.herokuapp.com/api/auth/change', JSON.stringify
+        (details), { headers: headers })
+        .subscribe(res => {
+          console.log('password change ho gaya')
+        }, (err) => {
+          reject(err);
+        });
+
+    });
+
+  }
+  mails(details) {
+    return new Promise((resolve, reject) => {
+
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      this.http.post('http://aircare-kinnari.herokuapp.com/api/auth/mail', JSON.stringify
+      //this.http.post('http://localhost:8080/api/auth/mail', JSON.stringify
+        (details), { headers: headers })
+        .subscribe(res => {
+          console.log('sos')
+        }, (err) => {
+          reject(err);
+        });
+
+    });
+
+  }
   logout() {
     this.storage.set('token', '');
+    this.storage.clear();
   }
 
 }

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-item>
+    <ion-searchbar placeholder="Where do you want to go? " [(ngModel)]="myInput" (change)="onInput($event)"></ion-searchbar>
+    <ion-icon name="mic" item-end (click)="startvoice()"></ion-icon>
+  </ion-item>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-scroll style="width: 100%; height: 40%" scrollY="true" *ngIf="navm">
+    <ion-list>
+      <ion-list-header>
+        Directions
+      </ion-list-header>
+      <ion-item>
+        {{dir1}}
+      </ion-item>
+      <ion-item>
+        {{dir2}}
+      </ion-item>
+      <ion-item>
+        {{dir3}}
+      </ion-item>
+      <ion-item>
+        {{dir4}}
+      </ion-item>
+      <ion-item>
+        {{dir5}}
+      </ion-item>
+      <ion-item>
+        {{dir6}}
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
+  <br><br>
+  <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 100%" zoom=true maxZoom=3>
+    <div class="ion-canvas">
+      <canvas #canvas></canvas>
+    
+    </div>
+  </ion-scroll>
+ 
+ 
+  <!-- <button ion-button color=primary (click)="nav()">Start navigation</button> -->
+ 
+</ion-content>

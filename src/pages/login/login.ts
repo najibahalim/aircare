@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Auth } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
-import { QuizListPage } from '../quiz-list/quiz-list';
 import { TabPage } from '../tab/tab';
 
 @Component({
@@ -16,7 +15,7 @@ export class LoginPage {
   password: string;
   loading: any;
 
-  constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController,public alertCtrl:AlertController) {
 
   }
 
@@ -71,4 +70,62 @@ export class LoginPage {
 
   }
 
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
+
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
+
+  changep() {
+    let alert1 = this.alertCtrl.create({
+      title: 'Change Password',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Email'
+        },
+        {
+          name: 'password',
+          placeholder: 'New Password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Login',
+          handler: data => {
+            var details = {
+              email: data.email,
+              pass: data.password
+            }
+            this.authService.password(details).then(() => {
+            }
+              , (err) => {
+
+              });
+            let alert = this.alertCtrl.create({
+              title: 'Success',
+              subTitle: 'Password changes Successfully',
+              buttons: ['Dismiss']
+            });
+            alert.present();
+           
+          }
+        }
+      ]
+    });
+
+    alert1.present();
+
+   
+  }
 }

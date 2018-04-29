@@ -28,37 +28,48 @@
     <input type="radio" name="tit" value="Mrs." class="a">Mrs
   </ion-item>
   <ion-item>
-    <ion-label floating>
+    <ion-label stacked>
       First Name
     </ion-label>
-    <ion-input [(ngModel)]="fname"></ion-input>
+    <ion-input [(ngModel)]="fname" placeholder="Enter First Name"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>
+    <ion-label stacked>
       Last Name
     </ion-label>
-    <ion-input [(ngModel)]="lname"></ion-input>
+    <ion-input [(ngModel)]="lname" placeholder="Enter last Name"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>
+    <ion-label stacked>
       Email
     </ion-label>
-    <ion-input [(ngModel)]="email" type="email"></ion-input>
+    <ion-input [(ngModel)]="email" type="email" placeholder="Enter Email"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label floating>
+    <ion-item>
+      <ion-label stacked>
+        Date of Birth
+      </ion-label>
+      <ion-input [(ngModel)]="dob" disabled placeholder="DD/MM/YY" (click)="t1()"></ion-input>
+    </ion-item>
+  <ion-item>   
+    <ion-label stacked>
       Mobile
     </ion-label>
-    <ion-input type="tel" col-2 ></ion-input>
-    <ion-input type="tel" [(ngModel)]="mobile"></ion-input>
+    <ion-input type="tel" [(ngModel)]="mobile" placeholder="Enter Mobile"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>
+    <ion-label stacked>
       Password
     </ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
+    <ion-input [type]="passwordType" [(ngModel)]="password" clearOnEdit="false" placeholder="Enter password"></ion-input>
+    <button ion-button clear item-end (click)='hideShowPassword()' style="height:32px;">
+      <ion-icon [name]="passwordIcon" style="font-size:32px;"></ion-icon>
+    
+    </button>
   </ion-item>
+  <span class="c"> Minimum 8 Characters Required</span>
 </ion-list>
+<span class="d"> *You agree to the <span (click)="more()"><u>Terms and Conditions</u></span> while signing up </span>
 </ion-content>
 <ion-footer>
   <button ion-button block full large class="b" (click)="register()">

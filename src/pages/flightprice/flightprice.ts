@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BookingPage } from '../booking/booking';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the FlightpricePage page.
@@ -23,48 +24,88 @@ export class FlightpricePage {
     stop:String,
     price:Number
   }>
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage) {
     this.flist=[{
       imgurl:"assets/imgs/car1.jpeg",
-      time:"03:05 -> 05:00 ",
+      time:"03:05 -> 09:00 ",
       dur:"6h",
       stop:"nonstop",
-      price: 18742
+      price: 14564
     },
     {
       imgurl: "assets/imgs/car2.jpg",
-      time: "03:05 -> 05:00 ",
+      time: "15:05 -> 21:00 ",
       dur: "6h",
       stop: "nonstop",
-      price: 18742
+      price: 3453
     },
     {
       imgurl: "assets/imgs/c3.png",
-      time: "03:05 -> 05:00 ",
+      time: "21:05 -> 3:00 ",
       dur: "6h",
       stop: "nonstop",
-      price: 18742
+      price: 3451
     },
     {
       imgurl: "assets/imgs/car1.jpeg",
-      time: "03:05 -> 05:00 ",
-      dur: "6h",
-      stop: "nonstop",
-      price: 18742
+      time: "23:05 -> 6:00 ",
+      dur: "8h",
+      stop: "1 stop",
+      price: 31245
     },
+      {
+        imgurl: "assets/imgs/car2.jpg",
+        time: "23:05 -> 6:00 ",
+        dur: "8h",
+        stop: "1 stop",
+        price: 23445
+      },
+      {
+        imgurl: "assets/imgs/car1.jpeg",
+        time: "23:05 -> 6:00 ",
+        dur: "8h",
+        stop: "1 stop",
+        price: 3456
+      },
+      {
+        imgurl: "assets/imgs/c3.png",
+        time: "23:05 -> 6:00 ",
+        dur: "8h",
+        stop: "1 stop",
+        price: 3422
+      },
+      {
+        imgurl: "assets/imgs/c3.png",
+        time: "23:05 -> 6:00 ",
+        dur: "8h",
+        stop: "1 stop",
+        price: 3156
+      },
+      {
+        imgurl: "assets/imgs/car1.jpeg",
+        time: "23:05 -> 6:00 ",
+        dur: "8h",
+        stop: "1 stop",
+        price: 3456
+      },
     {
       imgurl: "assets/imgs/c3.png",
-      time: "03:05 -> 05:00 ",
-      dur: "6h",
-      stop: "nonstop",
-      price: 18742
+      time: "3:05 -> 23:00 ",
+      dur: "12h",
+      stop: "2 stops",
+      price: 3456
     }]
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlightpricePage');
   }
-  next(){
+  next(i){
+    this.storage.set('imgurl', this.flist[i].imgurl);
+    this.storage.set('time', this.flist[i].time);
+    this.storage.set('dur', this.flist[i].dur);
+    this.storage.set('stop', this.flist[i].stop);
+    this.storage.set('price', this.flist[i].price);
     this.navCtrl.push(BookingPage)
   }
 
